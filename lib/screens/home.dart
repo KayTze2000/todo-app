@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: tdBGColor,
+      //backgroundColor: tdBGColor,
       appBar: _buildAppBar(),
       body: Stack(
         children: [
@@ -80,7 +80,7 @@ class _HomeState extends State<Home> {
                   ),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    boxShadow: const [
+                    boxShadow:  [
                       BoxShadow(
                         color: Colors.grey,
                         offset: Offset(0.0, 0.0),
@@ -93,6 +93,7 @@ class _HomeState extends State<Home> {
                   child: TextField(
                     controller: _todoController,
                     decoration: InputDecoration(
+                        hintStyle: TextStyle(color: Theme.of(context).canvasColor),
                         hintText: 'Add a new todo item',
                         border: InputBorder.none),
                   ),
@@ -174,14 +175,13 @@ class _HomeState extends State<Home> {
 
   AppBar _buildAppBar() {
   return AppBar(
-    backgroundColor: tdBlue,
+    backgroundColor: Theme.of(context).primaryColor,
     elevation: 0,
     title: Row(
       children: [
-        const Text(
+        Text(
           'ToDo List',
           style: TextStyle(
-            color: Colors.black,
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
           ),

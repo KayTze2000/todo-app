@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../screens/login_page.dart';
 import '../screens/theme_provider.dart';
+import '../constants/colors.dart';
 
 void main() {
   runApp(
@@ -15,11 +16,26 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: context.watch<ThemeProvider>().isDarkTheme ? ThemeData.dark() : ThemeData.light(),
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Todo App',
-      home: const LoginPage(),
+    return ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: Consumer<ThemeProvider>(
+        builder: (context, ThemeProvider themeNotifier,child) {          
+          return MaterialApp(
+            theme: context.watch<ThemeProvider>().isDarkTheme ? ThemeData(
+              brightness: Brightness.dark,   
+              primaryColor: tdGrey, 
+              canvasColor: const Color.fromARGB(255, 196, 196, 196),
+            ) : ThemeData(
+              brightness: Brightness.light,
+              primaryColor: Colors.lightBlue,
+              canvasColor: const Color.fromARGB(255, 50, 50, 50)
+              //primarySwatch: Colors.green
+            ),
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Todo App',
+            home: const LoginPage(),
+          );
+      }),
     );
   }
 }

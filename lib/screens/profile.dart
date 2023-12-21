@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'theme_provider.dart';
-import 'home.dart'; // Import the Home page
+//import 'home.dart'; // Import the Home page
 
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
         title: const Text('Profile Page'),
         leading: IconButton(
           icon: const Icon(Icons.home),
           onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => Home()),
+            Navigator.pop(
+              context
             );
           },
         ),
